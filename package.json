@@ -1,0 +1,19 @@
+{
+  "name": "codepipeline-cloudfront-invalidator",
+  "version": "1.0.0",
+  "description": "Boilerplate code for invalidating a CloudFront distro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjo2/CodePipeline-CloudFront-Invalidator.git"
+  },
+  "author": "cjo2 (www.cjdocuyanan.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cjo2/CodePipeline-CloudFront-Invalidator/issues"
+  },
+  "homepage": "https://github.com/cjo2/CodePipeline-CloudFront-Invalidator#readme"
+}
