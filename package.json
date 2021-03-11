@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/cjo2/CodePipeline-CloudFront-Invalidator/issues"
   },
-  "homepage": "https://github.com/cjo2/CodePipeline-CloudFront-Invalidator#readme"
+  "homepage": "https://github.com/cjo2/CodePipeline-CloudFront-Invalidator#readme",
+  "dependencies": {
+    "aws-sdk": "^2.861.0"
+  }
 }
