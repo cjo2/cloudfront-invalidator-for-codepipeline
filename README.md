@@ -5,7 +5,14 @@ Given that my personal website (https://www.cjdocuyanan.com) is continuously dep
 * Invalidate the CloudFront Distribution of my last deployment
 * Report the completion status of sending out the invalidation to CodePipeline
 
-This code does NOT report the status of the invalidation to CodePipeline. It is assumed that CloudFront will handle invalidation properly after it receives the request.
+This code does _not_ report the status of the invalidation to CodePipeline. It is assumed that CloudFront will handle invalidation properly after it receives the request.
 
 ## Setup
-You will need to set the environment variable DISTRIBUTION_ID to your actual CloudFront distribution id
+### AWS Lambda
+
+1. You will need to set the environment variable DISTRIBUTION_ID to your actual CloudFront distribution id
+2. Make sure that your IAM permissions include the following actions
+    ````
+    "codepipeline:PutJobSuccessResult",
+    "codepipeline:PutJobFailureResult"
+    ````
