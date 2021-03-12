@@ -19,4 +19,5 @@ This code does _not_ report the status of the invalidation to CodePipeline. It i
 
 ## Notes
 
-There are certainly other ways to accomplish this that you might want to explore. For example, S3 can emit events to Lambda to trigger a Lambda function. 
+### Amazon S3 Bucket Notifications
+If you are setting up a CodePipeline and you are outputting the file(s) to Amazon S3, you could also use an S3 Bucket Notification to emit an event to AWS Lambda. 
