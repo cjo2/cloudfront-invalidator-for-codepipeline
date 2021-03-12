@@ -16,3 +16,7 @@ This code does _not_ report the status of the invalidation to CodePipeline. It i
     "codepipeline:PutJobSuccessResult",
     "codepipeline:PutJobFailureResult"
     ````
+
+## Notes
+
+There are certainly other ways to accomplish this that you might want to explore. For example, S3 can emit events to Lambda to trigger a Lambda function. 
