@@ -54,7 +54,7 @@ let createInvalidation = distributionId => {
 
 exports.handler = async (event, context) => {
 
-    let jobId = event['CodePipeline.job']? event['CodePipeline.job'].id : 'STUBID';
+    let jobId = event['CodePipeline.job'] ? event['CodePipeline.job'].id : 'STUBID';
 
     try {
         const invalidationResponse = await createInvalidation(process.env.DISTRIBUTION_ID);
