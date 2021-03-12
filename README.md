@@ -11,7 +11,7 @@ This code does _not_ report the status of the invalidation to CodePipeline. It i
 ### AWS Lambda
 
 1. You will need to set the environment variable `DISTRIBUTION_ID` to your actual CloudFront distribution id
-2. Make sure that your AWS Lambda's IAM permissions include the following actions
+2. Make sure that your AWS Lambda's IAM permissions include the following actions. Be sure to also assign it to the correct resource ARN.
     ````
     "codepipeline:PutJobSuccessResult",
     "codepipeline:PutJobFailureResult"
