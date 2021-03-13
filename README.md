@@ -12,12 +12,17 @@ This code does _not_ report the status of the invalidation back to CodePipeline.
 ## Setup
 ### AWS Lambda
 
-1. You will need to set the environment variable `DISTRIBUTION_ID` to your actual CloudFront distribution id
-2. Make sure that your AWS Lambda's IAM permissions include the following actions. Be sure to also assign it to the correct resource ARN.
+1. Setup your Lambda function in the same region as your CodePipeline's region.
+2. You will need to set the environment variable `DISTRIBUTION_ID` to your actual CloudFront distribution id
+3. Make sure that your AWS Lambda's IAM permissions include the following actions. Be sure to also assign it to the correct resource ARN.
     ````
     "codepipeline:PutJobSuccessResult",
     "codepipeline:PutJobFailureResult"
     ````
+    
+### CodePipeline
+1. Edit the Stage that you want the Lambda function to run in. This is likely in your Deploy Stage.
+2. Click on Add Action. Action Provider should be AWS Lambda.
 
 ## Notes
 
