@@ -32,3 +32,7 @@ My personal website (https://www.cjdocuyanan.com) is continuously deployed upon 
 ## Alternatives
 ### Amazon S3 Bucket Notifications
 If you are setting up a CodePipeline and you are outputting the file(s) to Amazon S3, you could also use an S3 Bucket Notification to emit an event to AWS Lambda. 
+
+## To Do
+1. Switch to using parameters given in CodePipeline instead of defining Lambda environment variables. Environment variables is too limiting if you have multiple pipelines that need to do CDN invalidation.
+2. Write the boilerplate IAM (you really should define the resources though!)
