@@ -2,9 +2,7 @@
 ### Overview
 This is an AWS Lambda function to be triggered by CodePipeline in a Lambda Node environment.
 
-This Lambda function accomplishes two main goals:
-* Invalidate the CloudFront Distribution of my last deployment
-* Report the success/failure of the creation of the CloudFront Invalidation back to CodePipeline
+This Lambda function simply creates a CloudFront Invalidation so that your distibution is updated with the latest files.
 
 This code does _not_ report the actual status of the invalidation back to CodePipeline. It is assumed that CloudFront will handle invalidation properly after it receives the request.
 
