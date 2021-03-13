@@ -7,7 +7,7 @@ This Lambda function simply creates a CloudFront Invalidation so that your disti
 This code does _not_ report the actual status of the invalidation back to CodePipeline. It is assumed that CloudFront will handle invalidation properly after it receives the request.
 
 ### Wait but why?
-My personal website (https://www.cjdocuyanan.com) is continuously deployed upon each commit and subsequent build, so I needed a way to invalidate my CloudFront CDNs so that new static assets will be reflected immediately. This was a top-of-mind solution for my use case, but see [alternatives](#alternatives) for other ideas on how to accomplish this.
+My personal website (https://www.cjdocuyanan.com) is continuously deployed to Amazon S3 upon each commit and subsequent build, so I needed a way to invalidate my CloudFront CDNs so updated static assets will be reflected immediately. This was a top-of-mind solution for my use case, but see [alternatives](#alternatives) for other ideas on how to accomplish this.
 
 ## Setup
 ### Assumptions
