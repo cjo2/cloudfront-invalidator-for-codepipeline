@@ -10,8 +10,11 @@ This Lambda function accomplishes two main goals:
 This code does _not_ report the status of the invalidation back to CodePipeline. It is assumed that CloudFront will handle invalidation properly after it receives the request.
 
 ## Setup
-### AWS Lambda
+### Assumptions
+* You are familiar with AWS CodePipeline, Lambda, IAM Roles & Permissions
+* You have already built your pipeline and have a CloudFront distribution
 
+### AWS Lambda
 1. Setup your Lambda function in the same region as your CodePipeline's region.
 2. You will need to set the environment variable `DISTRIBUTION_ID` to your actual CloudFront distribution id
 3. Make sure that your AWS Lambda's IAM permissions include the following actions. Be sure to also assign it to the correct resource ARN.
