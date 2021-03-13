@@ -1,7 +1,7 @@
 # cloudfront-invalidator-for-codepipeline
 This is an AWS Lambda function to be triggered by CodePipeline in a Lambda Node environment.
 
-Given that my personal website (https://www.cjdocuyanan.com) is continuously deployed upon each commit and subsequent build, I needed a way to invalidate my CloudFront CDNs so that new static assets will be reflected immediately. 
+Given that my personal website (https://www.cjdocuyanan.com) is continuously deployed upon each commit and subsequent build, I needed a way to invalidate my CloudFront CDNs so that new static assets will be reflected immediately. I built this as a quick solution for my use case, but see [alternatives](#alternatives) for other ideas on how to accomplish this.
 
 This Lambda function accomplishes two main goals:
 * Invalidate the CloudFront Distribution of my last deployment
@@ -27,7 +27,6 @@ This code does _not_ report the status of the invalidation back to CodePipeline.
 1. Edit the Stage that you want the Lambda function to run in. This is likely in your Deploy Stage.
 2. Click on Add Action. Action Provider should be AWS Lambda.
 
-## Notes
-
+## Alternatives
 ### Amazon S3 Bucket Notifications
 If you are setting up a CodePipeline and you are outputting the file(s) to Amazon S3, you could also use an S3 Bucket Notification to emit an event to AWS Lambda. 
