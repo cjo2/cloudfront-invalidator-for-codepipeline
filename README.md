@@ -34,6 +34,9 @@ My personal website (https://www.cjdocuyanan.com) is continuously deployed upon 
 ### Amazon S3 Bucket Notifications
 If you are setting up a CodePipeline and you are outputting the file(s) to Amazon S3, you could also use an S3 Bucket Notification to emit an event to AWS Lambda. Note that you are charged for each path invalidation, not the amount of files you invalidate, so consider this when creating your file invalidations via a Bucket Notification.
 
+### Invalidate from buildspec.yml
+If you are deploying your assets within your buildspec, you may also simply call `aws cloudfront create-invalidation` [see more](https://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-invalidation.html).
+
 ## To Do
 1. Write the boilerplate IAM (you really should define the resources though!)
 2. Write tests
