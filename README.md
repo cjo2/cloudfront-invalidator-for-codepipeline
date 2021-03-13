@@ -34,5 +34,6 @@ My personal website (https://www.cjdocuyanan.com) is continuously deployed upon 
 If you are setting up a CodePipeline and you are outputting the file(s) to Amazon S3, you could also use an S3 Bucket Notification to emit an event to AWS Lambda. Note that you are charged for each path invalidation, not the amount of files you invalidate, so consider this when creating your file invalidations via a Bucket Notification.
 
 ## To Do
-1. Switch to using parameters given in CodePipeline instead of defining Lambda environment variables. Environment variables is too limiting if you have multiple pipelines that need to do CDN invalidation.
-2. Write the boilerplate IAM (you really should define the resources though!)
+1. Write the boilerplate IAM (you really should define the resources though!)
+2. Write tests
+3. Write deployment package using CloudFront or SAM
