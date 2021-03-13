@@ -16,7 +16,7 @@ My personal website (https://www.cjdocuyanan.com) is continuously deployed upon 
 * You are familiar with AWS CodePipeline, Lambda, IAM Roles & Permissions
 * You have already built your pipeline and have a CloudFront distribution
 
-### AWS Lambda
+### Lambda
 1. Setup your Lambda function in the same region as your CodePipeline's region.
 2. You will need to set the environment variable `DISTRIBUTION_ID` to your actual CloudFront distribution id
 3. Make sure that your AWS Lambda's IAM permissions include the following actions. Be sure to also assign it to the correct resource ARN.
