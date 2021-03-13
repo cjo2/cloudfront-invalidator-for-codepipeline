@@ -55,15 +55,15 @@ let codepipelineFail = (jobId, error, awsRequestId) => {
  * @returns {Promise}
  * {@link https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html} for more information on createInvalidation implementation.
  */
-let createInvalidation = (distributionId, jobId) => {
+let createInvalidation = (distributionId, jobId, items) => {
     return new Promise((resolve, reject) => {
         cloudfront.createInvalidation({
             'DistributionId': distributionId,
             'InvalidationBatch': {
-                'CallerReference': jobId ? `CodePipeline - ${jobId}` : new Date().getTime().toString(),
+                'CallerReference': jobId,
                 'Paths': {
-                    'Items': ['/*'],
-                    'Quantity': 1,
+                    'Items': items,
+                    'Quantity': items.length,
                 }
             }
         }, (err, data) => {
@@ -97,19 +97,31 @@ exports.handler = async (event, context) => {
         }
     }
 
-    if (!process.env.DISTRIBUTION_ID) {
+    const jobId = event['CodePipeline.job'].id;
+    const invalidationConfigString = event["CodePipeline.job"].data.actionConfiguration.configuration.UserParameters;
+    const { distributionId, items } = JSON.parse(invalidationConfigString);
+
+    if (!distributionId) {
         return {
             status: 400,
             error: {
-                message: 'Environment variable DISTRIBUTION_ID not found.'
+                message: 'User parameter "distributionId" not found.',
             }
         }
     }
 
-    let jobId = event['CodePipeline.job'].id;
+    if(!items || items.length === 0) {
+        return {
+            status: 400,
+            error: {
+                message: 'User parameter "items" is missing or has no paths.',
+            }
+        }
+    }
+
 
     try {
-        const invalidationResponse = await createInvalidation(process.env.DISTRIBUTION_ID);
+        const invalidationResponse = await createInvalidation(distributionId, jobId, items);
         await codepipelineSuccess(jobId);
 
         return {
