@@ -18,8 +18,7 @@ My personal website (https://www.cjdocuyanan.com) is continuously deployed upon 
 
 ### Lambda
 1. Setup your Lambda function in the same region as your CodePipeline's region.
-2. You will need to set the environment variable `DISTRIBUTION_ID` to your actual CloudFront distribution id
-3. Make sure that your AWS Lambda's IAM permissions include the following actions. Be sure to also assign it to the correct resource ARN.
+2. Make sure that your AWS Lambda's IAM permissions include the following actions. Be sure to also assign it to the correct resource ARN.
     ````
     "codepipeline:PutJobSuccessResult",
     "codepipeline:PutJobFailureResult"
@@ -28,6 +27,10 @@ My personal website (https://www.cjdocuyanan.com) is continuously deployed upon 
 ### CodePipeline
 1. Edit the Stage that you want the Lambda function to run in. This is likely in your Deploy Stage.
 2. Click on Add Action. Action Provider should be AWS Lambda.
+3. In User Parameters, create a JSON-formatted string with the keys `distributionId` and `items`. `items` should be an array with one or more file paths that you would like to invalidate.
+```json
+{"distributionId": "CLOUDFRONTDISTID", "items":["/*"]}
+```
 
 ## Alternatives
 ### Amazon S3 Bucket Notifications
