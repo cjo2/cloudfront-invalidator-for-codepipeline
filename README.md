@@ -1,4 +1,4 @@
-# Cloudfront Invalidator (for CodePipeline)
+# CloudFront Invalidator (for CodePipeline)
 ### Overview
 This is an AWS Lambda function to be triggered by CodePipeline in a Lambda Node environment.
 
