@@ -1,5 +1,5 @@
 {
-  "name": "codepipeline-cloudfront-invalidator",
+  "name": "cloudfront-invalidator-for-codepipeline",
   "version": "1.0.0",
   "description": "Boilerplate code for invalidating a CloudFront distro",
   "main": "index.js",
