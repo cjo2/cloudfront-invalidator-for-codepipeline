@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cjo2/CodePipeline-CloudFront-Invalidator.git"
+    "url": "git+https://github.com/cjo2/cloudfront-invalidator-for-codepipeline.git"
   },
   "author": "cjo2 (www.cjdocuyanan.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cjo2/CodePipeline-CloudFront-Invalidator/issues"
+    "url": "https://github.com/cjo2/cloudfront-invalidator-for-codepipeline/issues"
   },
-  "homepage": "https://github.com/cjo2/CodePipeline-CloudFront-Invalidator#readme",
+  "homepage": "https://github.com/cjo2/cloudfront-invalidator-for-codepipeline#readme",
   "dependencies": {
     "aws-sdk": "^2.861.0"
   }
