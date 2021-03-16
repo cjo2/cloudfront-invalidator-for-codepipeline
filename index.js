@@ -51,6 +51,7 @@ let codepipelineFail = (jobId, error, awsRequestId) => {
 /**
  * 
  * @param {*} distributionId 
+ * 
  * @param {*} jobId 
  * @returns {Promise}
  * {@link https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_CreateInvalidation.html} for more information on createInvalidation implementation.

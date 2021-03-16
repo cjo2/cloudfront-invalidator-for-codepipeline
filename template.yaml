@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  cloudfront-invalidator-for-codepipeline
+
+  SAM template for cloudfront-invalidator-for-codepipeline
+  
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  CloudFrontInvalidatorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: index.handler
+      Runtime: nodejs14.x
+  CloudFrontInvalidatorRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: 'Used for CloudFront Invalidator Lambda Function for CodePipeline'
+      Policies:
+        - AWSLambdaBasicExecutionRole
+
+Outputs:
+  CloudFrontInvalidatorFunction:
+    Description: "Lambda Function ARN"
+    Value: !GetAtt CloudFrontInvalidatorFunction.Arn
