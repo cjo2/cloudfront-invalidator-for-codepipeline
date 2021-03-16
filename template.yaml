@@ -17,6 +17,7 @@ Resources:
       CodeUri: ./
       Handler: index.handler
       Runtime: nodejs14.x
+      Role: !GetAtt CloudFrontInvalidatorRole.Arn
   CloudFrontInvalidatorRole:
     Type: AWS::IAM::Role
     Properties:
@@ -30,10 +31,33 @@ Resources:
             Action:
               - 'sts:AssumeRole'
       Description: 'Used for CloudFront Invalidator Lambda Function for CodePipeline'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
       Policies:
-        - AWSLambdaBasicExecutionRole
+        - PolicyName: CloudFrontInvalidationPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 'cloudfront:CreateInvalidation'
+                  - 'cloudfront:GetInvalidation'
+                  - 'cloudfront:ListInvalidations'
+                Resource: '*'
+        - PolicyName: CodePipelineReportJobStatusPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement: 
+              - Effect: Allow
+                Action:
+                  - 'codepipeline:PutJobFailureResult'
+                  - 'codepipeline:PutJobSuccessResult'
+                Resource: '*'
 
 Outputs:
   CloudFrontInvalidatorFunction:
     Description: "Lambda Function ARN"
     Value: !GetAtt CloudFrontInvalidatorFunction.Arn
+  CloudFrontInvalidatorRoleArn:
+    Description: "CloudFront Invalidator Role used for Lambda function"
+    Value: !GetAtt CloudFrontInvalidatorRole.Arn
