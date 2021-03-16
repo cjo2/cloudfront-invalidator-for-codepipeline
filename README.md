@@ -13,21 +13,19 @@ This is useful if you aren't using filename hashes to separate versions.
 
 ## Setup
 ### Assumptions
-* You are familiar with AWS CodePipeline, Lambda, IAM Roles & Permissions
-* You have already built your pipeline and have a CloudFront distribution
+* You are familiar with AWS Serverless Application Model (SAM) and you have it installed and properly configured
+* You have already configured your CodePipeline pipeline and have an existing CloudFront distribution
 
-### Lambda
-1. Setup your Lambda function in the same region as your CodePipeline's region.
-2. Make sure that your AWS Lambda's IAM permissions include the following actions. Be sure to also assign it to the correct resource ARN.
-    ````
-    "codepipeline:PutJobSuccessResult",
-    "codepipeline:PutJobFailureResult"
-    ````
+### Installation
+1. Clone this repository on your local machine
+2. Navigate to this directory in your terminal
+3. Run `sam deploy --guided` and follow the steps. This application must be deployed to the same region as your CodePipeline.
     
 ### CodePipeline
 1. Edit the Stage that you want the Lambda function to run in. This is likely in your Deploy Stage.
 2. Click on Add Action. Action Provider should be AWS Lambda.
-3. In User Parameters, create a JSON-formatted string with the keys `distributionId` and `items`. `items` should be an array with one or more file paths that you would like to invalidate.
+3. Locate the function under the 'Function name' input field.
+4. In User Parameters, create a JSON-formatted string with the keys `distributionId` and `items`. `items` should be an array with one or more file paths that you would like to invalidate.
 ```json
 {"distributionId": "CLOUDFRONTDISTID", "items":["/*"]}
 ```
@@ -40,6 +38,4 @@ If you are setting up a CodePipeline and you are outputting the file(s) to Amazo
 If you are deploying your assets within your buildspec, you may also simply call `aws cloudfront create-invalidation` [see more](https://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-invalidation.html).
 
 ## To Do
-1. Write the boilerplate IAM (you really should define the resources though!)
-2. Write tests
-3. Write deployment package using CloudFront or SAM
+1. Write tests
