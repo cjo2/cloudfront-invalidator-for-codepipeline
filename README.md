@@ -1,6 +1,6 @@
 # CloudFront Invalidator (for CodePipeline)
 ### Overview
-This is an AWS Lambda function to be triggered by CodePipeline in a Lambda Node environment. It is deployable using AWS SAM.
+This is an AWS Lambda function to be triggered by CodePipeline in a Lambda Node environment. It is deployable using AWS SAM CLI.
 
 This Lambda function simply creates a CloudFront Invalidation so that your distibution is updated with the latest files when the edge location's files are requested again.
 
