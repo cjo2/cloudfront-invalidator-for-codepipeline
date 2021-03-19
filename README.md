@@ -22,12 +22,16 @@ NOTE - If you are using this because you are not using versioned hashes in your 
 3. Run `sam deploy --guided` and follow the steps. This application must be deployed to the same region as your CodePipeline.
     
 ### CodePipeline
-1. Edit the Stage that you want the Lambda function to run in. This is likely in your Deploy Stage.
+1. Edit the Stage that you want the Lambda function to run in. This is likely in your deployment stage.
 2. Click on Add Action. Action Provider should be AWS Lambda.
 3. Locate the function under the 'Function name' input field.
-4. In User Parameters, create a JSON-formatted string with the keys `distributionId` and `items`. `items` should be an array with one or more file paths that you would like to invalidate.
+4. In User Parameters, create a JSON-formatted string with the keys `distributionId` and `items`. 
+   * `items` should be an array with one or more file paths that you would like to invalidate.
+   * `distributionId` should be your CloudFront distribution's id
+
+#### Example
 ```json
-{"distributionId": "CLOUDFRONTDISTID", "items":["/*"]}
+{"distributionId": "1234567890", "items":["/*"]}
 ```
 
 ## Alternatives
