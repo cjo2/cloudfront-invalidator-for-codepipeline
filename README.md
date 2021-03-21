@@ -35,6 +35,8 @@ NOTE - If you are using this because you are not using versioned hashes in your 
 ```
 
 ## Alternatives
+If you need to invalidate assets from CodePipeline, here are other options I explored before taking the AWS Lambda route.
+
 ### Amazon S3 Bucket Notifications
 If you are setting up a CodePipeline and you are outputting the file(s) to Amazon S3, you could also use an S3 Bucket Notification to emit an event to AWS Lambda. Note that you are charged for each path invalidation, not the amount of files you invalidate, so consider this when creating your file invalidations via a Bucket Notification.
 
