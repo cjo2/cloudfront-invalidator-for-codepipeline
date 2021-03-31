@@ -13,8 +13,9 @@ NOTE - If you are using this because you are not using versioned hashes in your 
 
 ## Setup
 ### Assumptions
-* You are familiar with AWS Serverless Application Model (SAM) and you have it installed and properly configured
-* You have already configured your CodePipeline pipeline and have an existing CloudFront distribution
+* You are familiar with AWS Serverless Application Model (SAM) and you have it installed and configured
+* You have already configured your CodePipeline pipeline
+* You have an existing CloudFront distribution
 
 ### Installation
 1. Clone this repository on your local machine
