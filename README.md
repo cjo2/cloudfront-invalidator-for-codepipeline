@@ -43,6 +43,3 @@ If you are setting up a CodePipeline and you are outputting the file(s) to Amazo
 
 ### Invalidate from buildspec.yml
 If you are deploying your assets within your buildspec, you may also simply call `aws cloudfront create-invalidation` [see more](https://docs.aws.amazon.com/cli/latest/reference/cloudfront/create-invalidation.html).
-
-## To Do
-1. Write tests
