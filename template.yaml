@@ -61,3 +61,9 @@ Outputs:
   CloudFrontInvalidatorRoleArn:
     Description: "CloudFront Invalidator Role used for Lambda function"
     Value: !GetAtt CloudFrontInvalidatorRole.Arn
+  CloudFrontInvalidatorFunctionName:
+    # used when bringing pipelines up via CloudFormation - https://docs.aws.amazon.com/codepipeline/latest/userguide/action-reference-Lambda.html#action-reference-Lambda-config
+    Description: "Lambda Function Name"
+    Value: !Ref CloudFrontInvalidatorFunction
+    Export:
+      Name: !Sub "${AWS::StackName}-CloudFrontInvalidatorFunctionName"
