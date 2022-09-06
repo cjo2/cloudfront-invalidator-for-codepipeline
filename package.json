@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/cjo2/cloudfront-invalidator-for-codepipeline#readme",
   "dependencies": {
-    "aws-sdk": "^2.861.0"
+    "aws-sdk": "^2.1209.0"
   }
 }
